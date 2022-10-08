@@ -1,0 +1,11 @@
+[
+    {
+        "id": 1,
+        "name": "frontend",
+        "price": 14000.0,
+        "date of creation": "2022-10-4",
+        "date of update": "2022-10-4",
+        "description": "Courses about frontend",
+        "status": false
+    }
+]
