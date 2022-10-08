@@ -1,9 +1,10 @@
 import json
 import datetime
 
+FILE_PATH = 'data.json'
 
 def get_data(ge_price = None, le_price = None, sale = None, sold = None):
-    with open('data.json') as file:
+    with open(FILE_PATH) as file:
         data = json.load(file)
     if ge_price:
         new_data = [i for i in data if i['price'] >= ge_price]
@@ -41,7 +42,7 @@ def post_data():
         'description': input('Enter course descriptions: '),
         'status': True
     })
-    with open('data.json', 'w') as file:
+    with open(FILE_PATH, 'w') as file:
         json.dump(data, file)
     return 'Courses successfully added'
 
@@ -60,7 +61,7 @@ def data_update(id):
             data[index_]['description'] = input('Enter description: ')
         if input('Do you want change status: (yes/no) ') == 'yes':
             data[index_]['status'] = input('Enter status of course sale(True)\sold(False): ')
-        json.dump(data, open ('data.json', 'w'))
+        json.dump(data, open (FILE_PATH, 'w'))
         return 'Course successfully updated'
     return 'There are no such courses.'    
 
@@ -69,7 +70,7 @@ def delate_data(id):
     data_delate = [i for i in data if i['id'] == id]
     if data_delate:
         data.remove(data_delate[0])
-        json.dump(data, open('data.json', 'w'))
+        json.dump(data, open(FILE_PATH, 'w'))
         return 'Course successfully daleted'
     return 'There are no such courses'
 
